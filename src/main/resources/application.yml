@@ -24,7 +24,7 @@ security:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: runtime-registry
     port: 8070
   client:
     serviceUrl:

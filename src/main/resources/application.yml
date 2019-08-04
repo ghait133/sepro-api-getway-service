@@ -2,7 +2,7 @@ spring:
   aop:
     proxyTargetClass: true
   application:
-    name: api_gateway_service
+    name: api-gateway-service
 
 server:
   port: 8071
@@ -35,21 +35,36 @@ zuul:
   sensitiveHeaders: Cookie,Set-Cookie
 
   routes:
+    customer-informations-service:
+      path: /customerinfos/**
+      serviceId: customer-informations-service
+
+    customer-service:
+      path: /customer/**
+      serviceId: customer-service
+
     partner_service:
       path: /partner/**
-      serviceId: partner_service
+      serviceId: partner-service
 
     user_service:
       path: /user/**
-      serviceId: user_service
+      serviceId: user-service
 
     authentication_service:
       sensitiveHeaders: Authorization
       path: /auth/**
-      serviceId: authentication_service
+      serviceId: authentication-service
 
   add-proxy-headers: true
   prefix: /api
 logging:
   level.org.springframework.security: DEBUG
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

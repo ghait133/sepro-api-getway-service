@@ -24,7 +24,8 @@ security:
 
 eureka:
   instance:
-    hostname: runtime-registry
+    hostname: localhost
+    #hostname: runtime-registry
     port: 8070
   client:
     serviceUrl:
@@ -35,9 +36,17 @@ zuul:
   sensitiveHeaders: Cookie,Set-Cookie
 
   routes:
-    customer-informations-service:
+    employee-service:
+      path: /employee/**
+      serviceId: employee-service
+
+    appointment-service:
+      path: /appointment/**
+      serviceId: appointment-service
+
+    friseur-information-service:
       path: /customerinfos/**
-      serviceId: customer-informations-service
+      serviceId: friseur-information-service
 
     customer-service:
       path: /customer/**

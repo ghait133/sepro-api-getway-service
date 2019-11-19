@@ -34,7 +34,7 @@ eureka:
 zuul:
 
   sensitiveHeaders: Cookie,Set-Cookie
-
+  prefix: /api
   routes:
     employee-service:
       path: /employee/**
@@ -66,7 +66,7 @@ zuul:
       serviceId: authentication-service
 
   add-proxy-headers: true
-  prefix: /api
+
 logging:
   level.org.springframework.security: DEBUG
 
